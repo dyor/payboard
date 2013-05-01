@@ -1,0 +1,40 @@
+<h1>Welcome to Payboard</h1>
+<a href="<%= @authorize_url %>">Connect to Stripe</a>
+<br/>
+<a href="/customers">Get customers</a>
+<div id="chart" style="width:100%; height:400px;"></div>
+<script>
+$(function () { 
+	$('#chart').highcharts({
+        chart: {
+            type: 'area',            
+        },
+        plotOptions: {
+        	area: {
+        		stacking: 'normal'
+        	}
+        },
+        title: {
+            text: 'Signups By Plan'
+        },
+        xAxis: {
+            categories: <%= @categories.to_s %>
+        },
+        yAxis: {
+            title: {
+                text: '# Signups'
+            }
+        },
+        series: [{
+            name: 'Bronze',
+        	data: <%= @bronze.to_s %>
+        }, {
+            name: 'Meetup',
+            data: <%= @meetup.to_s %>
+        }, {
+        	name: 'Silver',
+            data: <%= @silver.to_s %>
+        }]
+    });    
+})
+</script>
