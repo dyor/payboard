@@ -12,7 +12,7 @@ configure do
   set :my_api_key, ENV['STRIPE_API_KEY']
   set :state, Digest::SHA2.hexdigest(rand.to_s)
 
-  set :bind, '192.168.106.128'
+  #set :bind, '192.168.106.128'
 end
 
 get '/' do
